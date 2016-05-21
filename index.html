@@ -6,8 +6,8 @@
 
     <title>TITLE</title>
 
-    <meta name="description" content="TITLE">
-    <meta name="author" content="AUTHOR">
+    <meta name="description" content="GraphQL+Relay Talk, EnterJs">
+    <meta name="author" content="Robert Hostlowsky">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -42,47 +42,45 @@
 
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
+          <section data-markdown
+                   data-background="images/codecentric-title-background-16x9.png">
+                  ## GraphQL + Relay, data-binding 2.0
+                  ## *DRAFT VERSION/Preview*
 
-<!-- ########################################################################################### -->
-<!-- START                                                                                       -->
-<!-- ########################################################################################### -->
+                  Robert Hostlowsky, codecentric AG
+          </section>
+          <section>
+              <section data-markdown="graphql-0intro.md"
+                       data-separator-vertical="^\n\n"
+                       data-separator="^\n\n"></section>
+          </section>
+          <section>
+              <section data-markdown="graphql-1graphql.md"
+                       data-separator-vertical="^\n\n"
+                       data-separator="^\n\n"></section>
+          </section>
+          <section>
+              <section data-markdown="graphql-2relay.md"
+                       data-separator-vertical="^\n\n"
+                       data-separator="^\n\n"></section>
+          </section>
+          <section data-background="images/codecentric-green-background-16x9.png">
+              <section data-markdown="graphql-3conclusion.md"
+                       data-separator-vertical="^\n\n"
+                       data-separator="^\n\n"></section>
+          </section>
+          <section data-markdown>
+              <script type="text/template">
+                  ## Thank you!
 
-<section data-markdown data-background="images/codecentric-title-background-16x9.png"><script type="text/template">
-## TITLE
+                  &nbsp;
 
-AUTHOR, codecentric
-</script></section>
+                  [![License](https://i.creativecommons.org/l/by/4.0/88x31.png "License")](http://creativecommons.org/licenses/by/4.0)
+                  <br>
 
-<!-- ########################################################################################### -->
-
-<section data-markdown><script type="text/template">
-### TODO
-
-- TODO
-- TODO
-</script></section>
-
-<!-- ########################################################################################### -->
-
-<section data-markdown data-background="images/codecentric-green-background-16x9.png"><script type="text/template">
-### TODO
-</script></section>
-
-<!-- ########################################################################################### -->
-
-<section data-markdown><script type="text/template">
-## Thank you!
-
-&nbsp;
-
-[![License](https://i.creativecommons.org/l/by/4.0/88x31.png "License")](http://creativecommons.org/licenses/by/4.0)<br>
-
-<span class="license">This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0) and powered by [reveal.js](https://github.com/hakimel/reveal.js) under its [LICENSE](https://github.com/hakimel/reveal.js/blob/master/LICENSE).</span>
-</script></section>
-
-<!-- ########################################################################################### -->
-<!-- END                                                                                         -->
-<!-- ########################################################################################### -->
+                  <span class="license">This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0) and powered by [reveal.js](https://github.com/hakimel/reveal.js) under its [LICENSE](https://github.com/hakimel/reveal.js/blob/master/LICENSE).</span>
+              </script>
+          </section>
 
       </div>
 
@@ -91,30 +89,40 @@ AUTHOR, codecentric
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.js"></script>
 
-    <script>
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
 
-      // Full list of configuration options available at:
-      // https://github.com/hakimel/reveal.js#configuration
-      Reveal.initialize({
-        controls: true,
-        progress: true,
-        history: true,
-        center: true,
+				slideNumber: true,
 
-        transition: 'slide', // none/fade/slide/convex/concave/zoom
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-        // Optional reveal.js plugins
-        dependencies: [
-          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: 'plugin/zoom-js/zoom.js', async: true },
-          { src: 'plugin/notes/notes.js', async: true }
-        ]
-      });
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.1,
+				maxScale: 1.5,
 
-    </script>
 
-  </body>
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+
+<!--
+		<script id="__bs_script__">//<![CDATA[
+		document.write("<script async src='http://HOST:3001/browser-sync/browser-sync-client.2.12.8.js'><\/script>".replace("HOST", location.hostname));
+		//]]></script>
+-->
+
+	</body>
 </html>
