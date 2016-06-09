@@ -1,12 +1,17 @@
-# GraphQL + Relay = data-binding 2.0 ?
+# Introduction
 
-
-# First: React
+* "My experience with a monolithic frontend web app..."
+* "Be creative, again!"
+ 
+# First: React basics
 ## the V of MVC
 [IMG]
 
-
 # React...
+* composition
+* props / state
+* higher-order/just a function
+ 
 ### Angular, Ember, Meteor...
 
 have some data-binding,
