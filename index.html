@@ -57,21 +57,25 @@
           <section>
               <section data-markdown="graphql-0intro.md"
                        data-separator-vertical="^\n\n"
+                       data-separator-notes="^Note:"
                        data-separator="^\n\n"></section>
           </section>
           <section>
               <section data-markdown="graphql-1graphql.md"
                        data-separator-vertical="^\n\n"
+                       data-separator-notes="^Note:"
                        data-separator="^\n\n"></section>
           </section>
           <section>
               <section data-markdown="graphql-2relay.md"
                        data-separator-vertical="^\n\n"
+                       data-separator-notes="^Note:"
                        data-separator="^\n\n"></section>
           </section>
           <section data-background="images/codecentric-green-background-16x9.png">
               <section data-markdown="graphql-3conclusion.md"
                        data-separator-vertical="^\n\n"
+                       data-separator-notes="^Note:"
                        data-separator="^\n\n"></section>
           </section>
           <section data-markdown>
@@ -110,18 +114,26 @@
 				minScale: 0.1,
 				maxScale: 1.5,
 
+        showNotes: true,
 
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
-		</script>
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          // Interpret Markdown in <section> elements
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          // Syntax highlight for <code> elements
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          // Zoom in and out with Alt+click
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          // Speaker notes
+          { src: 'plugin/notes/notes.js', async: true }
+        ]
+      });
+
+    </script>
 
   </body>
 </html>

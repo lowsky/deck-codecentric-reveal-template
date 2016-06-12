@@ -1,10 +1,10 @@
 # What is Relay?
-![https://raw.githubusercontent.com/facebook/relay/master/website/src/relay/img/logo.svg](./images/relayLogo.svg)
+![https://raw.githubusercontent.com/facebook/relay/master/website/src/relay/img/logo.svg](./images/relayLogo.svg)  <!-- .element: style="height:10em" -->
 
 "Data-fetching functionality for React applications"
 
 
-![https://raw.githubusercontent.com/facebook/relay/master/website/src/relay/img/logo.svg](./images/relayLogo.svg)
+![https://raw.githubusercontent.com/facebook/relay/master/website/src/relay/img/logo.svg](./images/relayLogo.svg)  <!-- .element: style="height:10em" -->
 
 "A framework for building data-driven React applications", [facebook.github.io/relay](http://facebook.github.io/relay)
 
@@ -12,9 +12,11 @@
 
 
 
-@facebook: "Relay drives some React apps, and reduces lots of code on server and client side."
+> "Relay drives some React apps, and **reduces lots of code** on server and client side."
+>
+> @facebook
 
-(open source since 2015)
+open source since 2015
 
 
 * **Colocation**
