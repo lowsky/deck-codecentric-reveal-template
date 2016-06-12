@@ -1,39 +1,25 @@
 # GraphQL
-Since 2013:
+![GraphQL logo](./images/graphqlLogo.png)
 
-"Any user of the native facebook iOS or Android app in the last 3 years has used an app powered by GraphQL."
+
+
+![](./images/graphql-everywhere.jpg)
+Since 2013:
+"As a user of the native facebook iOS or Android app, you are using an app powered by GraphQL."
 
 
 # What is it?
-## Schema definition. Type system:
-```json
-{
-  "name": "GithubUser",
-  "fields": [
-    {
-      "name": "id",
-      "type": {
-        "name": "Int",
-        "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. "
-      },
-    },
-    {
-      "name": "company",
-      "type": {
-        "name": "String",
-        "description": "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text."
-      },
-    },
-    {
-      "name": "repos",
-      "type": {
-        "kind": "LIST",
-      },
-    }
-  ]
-}
-```
-(part of graphql schema...)
+**Centralized data provider**
+
+![REST-GraphQL](./images/rest-graphql-arch.png) <!-- .element: style="height:10em" -->
+
+(from https://medium.com/apollo-stack/how-do-i-graphql-2fcabfc94a01)
+Jonas Helfer
+
+
+![REST-GraphQL](./images/rest-graphql-arch.png)
+> https://cdn-images-1.medium.com/max/1600/1*f_XvFD7FvliMM74WHJ0vRQ.png)
+(from https://medium.com/apollo-stack/how-do-i-graphql-2fcabfc94a01)
 
 
 ## a "Query Language for the web"
@@ -41,7 +27,7 @@ Similar to JSON, but without 'values'
 
 ```javascript
 {
-     githubUser(id: 'lowsky') {
+     githubUser(id: "lowsky") {
        login
        name
        company
@@ -67,6 +53,38 @@ Simple JSON
     }
 }
 ```
+
+
+## Schema definition. Type system:
+```json
+{
+  "name": "GithubUser",
+  "fields": [
+    {
+      "name": "id",
+      "type": {
+        "name": "Int",
+        "description": "the user login name. "
+      }
+    },
+    {
+      "name": "name",
+      "type": {
+        "name": "String",
+      }
+    },
+    {
+      "name": "repos",
+      "type": {
+        "kind": "LIST"
+      }
+    }
+    ...
+  ]
+}
+```
+(part of graphql schema...)
+
 
 
 ## *Graph*-QL
@@ -172,7 +190,7 @@ results in ...
 ### Schema inspection:
 Graph*i*QL hands-on / demo
 
-[screen shot...](image)
+[DEMO/screen shot...](image)
 
 
 ## Structured, Arbitrary Code

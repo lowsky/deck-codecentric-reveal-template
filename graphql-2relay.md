@@ -1,17 +1,27 @@
-# What is Relay
+# What is Relay?
+![https://raw.githubusercontent.com/facebook/relay/master/website/src/relay/img/logo.svg](./images/relayLogo.svg)
+
 "Data-fetching functionality for React applications"
 
-"a framework for building data-driven react applications", [facebook.github.io/relay](http://facebook.github.io/relay)
 
-**Colocation**
+![https://raw.githubusercontent.com/facebook/relay/master/website/src/relay/img/logo.svg](./images/relayLogo.svg)
 
-**Declarative**
+"A framework for building data-driven React applications", [facebook.github.io/relay](http://facebook.github.io/relay)
 
-**Mutations**
+... on top of GraphQL
 
-"Relay drives some React apps, and reduces lots of code on server and client side."
+
+
+@facebook: "Relay drives some React apps, and reduces lots of code on server and client side."
 
 (open source since 2015)
+
+
+* **Colocation**
+
+* **Declarative**
+
+* **Mutations**
 
 
 # Co-locating
@@ -24,7 +34,7 @@ class Tea extends React.Component {
           </li>);
     }
 }
-Tea = Relay.createContainer(Tea, {
+export default class Relay.createContainer(Tea, {
     fragments: {
         tea: () => Relay.QL`
           fragment on Tea {
@@ -45,17 +55,17 @@ Each component specifies the data it needs
 
 
 # Declarative:
-### UI defines what data it needs
+_UI defines **what data** it needs_
 
-Relay/GraphQL can do all the heavy weighting...
 
-!notes:
+## Relay/GraphQL can do all the heavy weighting:
+
 * auto query validation
 * auto query composition
 * render when data fully loaded
-* Batch data queries efficiently (N+1 problem)
+* batch data queries efficiently (N+1 problem)
 * less dependencies of server-client
-* no more over-fetching and under-fetching checks
+* no more over-fetching and under-fetching
 
 
 ## And it does even more:
@@ -74,18 +84,18 @@ Relay/GraphQL can do all the heavy weighting...
 
 
 ## Relay App building blocks / layers
+[IMG]
  1. queued data: optimistic data
  1. store data: server
  1. cached data
 
-[IMG / Code examples]
+[Code examples]
 TBD
 
 
-## how Relay extends flux arch:
+## How Relay extends Flux architecture:
 DataFetching: Relay Store = client-side cache (normalized, flattened graph representation
-
-[IMG]
+![relay-architecture](https://facebook.github.io/react/img/blog/relay-components/relay-architecture.png)
 TBD
 
 
