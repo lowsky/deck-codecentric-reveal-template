@@ -27,7 +27,7 @@ Similar to JSON, but without 'values'
 
 ```javascript
 {
-     githubUser(id: "lowsky") {
+     githubUser(id:"lowsky") {
        login
        name
        company
@@ -42,9 +42,9 @@ results in ...
 ## Query result:
 Simple JSON
 
-```
+```json
 {
-    githubUser: {
+    "githubUser": {
       "login": "lowsky",
       "name": "Robert Hostlowsky",
       "company": "codecentric AG",
@@ -70,7 +70,7 @@ Simple JSON
     {
       "name": "name",
       "type": {
-        "name": "String",
+        "name": "String"
       }
     },
     {
@@ -98,16 +98,15 @@ Aka. "Nested rpc", hierachical
       repos {
         name
         commits(limit: 1) {
-          message date
-          author {
-              login
+            message date
+            author {
+                login
             }
-          }
         }
-        issues(limit: 1) {
-          title user {
+      }
+      issues(limit: 1) {
+        title user {
             id
-          }
         }
       }
     }
@@ -117,14 +116,14 @@ Aka. "Nested rpc", hierachical
 results in ...
 
 
-```javascript
+```json
 {
     "github": {
       "user": {
         "login": "lowsky",
         "repos": [
           {
-            "name": "graphql-relay-talk",
+            "name": "deck-graphql-relay-talk",
             "commits": [
               {
                 "message": "Initial commit",
@@ -135,6 +134,7 @@ results in ...
               }
             ],
             "issues": []
+          },
           {
             "name": "dashboard",
             "commits": [
@@ -167,11 +167,10 @@ results in ...
               }
             ],
             "issues": []
-          },
+          }
         ]
       }
     }
-  }
 }
 ```
 
@@ -197,7 +196,7 @@ Graph*i*QL hands-on / demo
  (queries backed by any code not only SQL)
  e.g. Hello 'cat':
 
-```
+```javascript
 import {
   graphql,
   GraphQLSchema,
@@ -226,7 +225,7 @@ const schema = new GraphQLSchema({
 
 
 ### run query
-```
+```javascript
 const query = `
   {
     search(text: "world")
@@ -244,11 +243,11 @@ Hello, world
 
 
 ## Creating a custom type
-```
+```javascript
 const GithubUserType = new GraphQLObjectType({
   name : 'GithubUser',
   fields : {
-    login : { type : GraphQLString }
+    login : { type : GraphQLString },
     repos : {
         type : new GraphQLList(RepoType),
         resolve(user) {
