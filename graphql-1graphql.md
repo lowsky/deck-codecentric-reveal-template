@@ -3,44 +3,45 @@
 
 
 
-![](./images/graphql-everywhere.jpg)
-Since 2013:
-"As a user of the native facebook iOS or Android app, you are using an app powered by GraphQL."
+![graphql-everywhere](./images/graphql-everywhere.jpg)
+
+
+> since 2013:
+>
+> "As a user of the native facebook iOS or Android app, you are using an app **powered by GraphQL**."
 
 
 # What is it?
 **Centralized data provider**
 
-![REST-GraphQL](./images/rest-graphql-arch.png) <!-- .element: style="height:10em" -->
+![REST-graphql-small](./images/rest-graphql-arch.png) <!-- .element: style="height:10em" -->
 
-(from https://medium.com/apollo-stack/how-do-i-graphql-2fcabfc94a01)
+from https://medium.com/apollo-stack/how-do-i-graphql-2fcabfc94a01
 Jonas Helfer
 
 
-![REST-GraphQL](./images/rest-graphql-arch.png)
+![REST-graphql](./images/rest-graphql-arch.png)
 > https://cdn-images-1.medium.com/max/1600/1*f_XvFD7FvliMM74WHJ0vRQ.png)
 (from https://medium.com/apollo-stack/how-do-i-graphql-2fcabfc94a01)
 
 
-## a "Query Language for the web"
+## "Query Language for the web"
 Similar to JSON, but without 'values'
 
 ```javascript
 {
-     githubUser(id:"lowsky") {
-       login
-       name
-       company
-       location
-       created_at
-   }
+    githubUser(id:"lowsky") {
+        login
+        name
+        company
+        location
+        created_at
+    }
 }
 ```
-results in ...
 
 
 ## Query result:
-Simple JSON
 
 ```json
 {
@@ -53,38 +54,7 @@ Simple JSON
     }
 }
 ```
-
-
-## Schema definition. Type system:
-```json
-{
-  "name": "GithubUser",
-  "fields": [
-    {
-      "name": "id",
-      "type": {
-        "name": "Int",
-        "description": "the user login name. "
-      }
-    },
-    {
-      "name": "name",
-      "type": {
-        "name": "String"
-      }
-    },
-    {
-      "name": "repos",
-      "type": {
-        "kind": "LIST"
-      }
-    }
-    ...
-  ]
-}
-```
-(part of graphql schema...)
-
+simple JSON
 
 
 ## *Graph*-QL
@@ -113,7 +83,6 @@ Aka. "Nested rpc", hierachical
   }
 }
 ```
-results in ...
 
 
 ```json
@@ -148,7 +117,7 @@ results in ...
             ],
             "issues": [
               {
-                "title": "react-dom@15.1.0 breaks build 🚨",
+                "title": "react-dom@15.1.0 breaks build",
                 "user": {
                   "id": 14790466
                 }
@@ -176,26 +145,51 @@ results in ...
 
 
 ## GraphQL Features
-* _Hierarchical_ (embedding sub queries)
-* _Strongly-typed_ (schema definition)
+* **_Hierarchical_ (embedding sub queries)**
+* **_Strongly-typed_ (schema definition)**
+* **Client-specified queries ("only what the client needs")**
 * Introspective (tools can look into the schema)
+
+Note: there is more:
 * Product-centric (driven by view, "fetch only what is needed")
-* Client-specified queries ("only what the client needs")
 * Backwards Compatible
-* Structured, Arbitrary Code (queries backed by any code not only SQL)
+* Structured, Arbitrary Code (queries backed by any code, not only SQL)
 * Application-Layer Protocol (independend of http/any...)
 
 
-### Schema inspection:
-Graph*i*QL hands-on / demo
+## Schema definition. Type system!
+```json
+{
+  "name": "GithubUser",
+  "fields": [
+    {
+      "name": "id",
+      "type": { "name": "Int", }
+    },
+    {
+      "name": "name",
+      "type": { "name": "String" }
+    },
+    {
+      "name": "repos",
+      "type": { "kind": "LIST" }
+    }
+  ]
+}
+```
 
-[DEMO/screen shot...](image)
+
+### Schema inspection in Graph*i*QL
+
+![DEMO/screen shot...](images/graphqlSchemaInspect.png)
 
 
-## Structured, Arbitrary Code
- (queries backed by any code not only SQL)
- e.g. Hello 'cat':
+### Schema enables client-side tooling
 
+![DEMO/screen shot...](images/graphqlQuery.png)
+
+
+## Use Structure, Arbitrary Code
 ```javascript
 import {
   graphql,
@@ -222,15 +216,17 @@ const schema = new GraphQLSchema({
   })
 });
 ```
+Note:
+ (queries backed by any code not only SQL)
+ e.g. Hello 'cat':
 
 
-### run query
+### Running a query
 ```javascript
 const query = `
   {
-    search(text: "world")
-  }
-`;
+    search(text: "enterjs")
+  }`;
 
 graphql(schema, query).then(result => {
   console.log(result);
@@ -238,7 +234,7 @@ graphql(schema, query).then(result => {
 ```
 results in
 ```
-Hello, world
+Hello, enterjs
 ```
 
 
@@ -261,30 +257,47 @@ const GithubUserType = new GraphQLObjectType({
 
 
 ## Queries
-TBD
+
+
+## Validations
+Demo: Graph*i*QL
+
+
+## Fragments
+* select fields on specific types
+
+Demo: Graph*i*QL
+
+* very much used by Relay...
 
 
 ## Mutations
 TBD
 
 
-## Product-centric (driven by view, "fetch only what is needed")
-TBD
+## Huge Ecosystem
+* [graph.cool](http://docs.graph.cool/docs/data-model)
+* Meteor: Apollo stack
+* [graphql backends in _scala, rails, django, node, etc_](https://github.com/steveluscher/zero-to-graphql)
+* graphql-hub
+* Chrome extension for graphql-network
+* graphql-tools: _mock server_ for easy testing (by apollo people?)
+* [Create Schema from Postgresql database](https://github.com/calebmer/postgraphql)
 
-
-## Backwards Compatible
-TBD
-
-
-## Fragments
-TBD
-
-
-## More (slides) about...
-Different server implementations
-
-For many more details, see specification.
-
+Note:
+Detailed Specification
 [graphql.org](graphql.org)
 
-TBD
+
+## Latest news headlines from React Europe 2016
+* GraphQL bring subscriptions / real-time communication
+* deferred fragments
+
+
+Note:
+GraphQL solves problems
+* flex queries
+* ui driven: no over-fetching
+* no under-fetching
+* flexible for different devices
+* change api/compatible...
