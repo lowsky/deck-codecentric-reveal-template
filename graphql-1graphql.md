@@ -1,5 +1,5 @@
 # GraphQL
-![GraphQL logo](./images/graphqlLogo.png)
+![http://graphql.org/img/logo.svg](./images/graphqlLogo.png)
 
 
 
@@ -12,17 +12,20 @@
 
 
 # What is it?
+
+
 **Centralized data provider**
 
 ![REST-graphql-small](./images/rest-graphql-arch.png) <!-- .element: style="height:10em" -->
 
-from https://medium.com/apollo-stack/how-do-i-graphql-2fcabfc94a01
+Note:
+from
+https://medium.com/apollo-stack/how-do-i-graphql-2fcabfc94a01
 Jonas Helfer
 
 
 ![REST-graphql](./images/rest-graphql-arch.png)
 > https://cdn-images-1.medium.com/max/1600/1*f_XvFD7FvliMM74WHJ0vRQ.png)
-(from https://medium.com/apollo-stack/how-do-i-graphql-2fcabfc94a01)
 
 
 ## "Query Language for the web"
@@ -73,10 +76,10 @@ Aka. "Nested rpc", hierachical
                 login
             }
         }
-      }
-      issues(limit: 1) {
-        title user {
-            id
+        issues(limit: 1) {
+            title user {
+                id
+            }
         }
       }
     }
@@ -146,8 +149,8 @@ Aka. "Nested rpc", hierachical
 
 ## GraphQL Features
 * **_Hierarchical_ (embedding sub queries)**
-* **_Strongly-typed_ (schema definition)**
-* **Client-specified queries ("only what the client needs")**
+* **Client-specified queries** ("only what the client needs")
+* _Strongly-typed_ (schema definition)
 * Introspective (tools can look into the schema)
 
 Note: there is more:
@@ -157,7 +160,7 @@ Note: there is more:
 * Application-Layer Protocol (independend of http/any...)
 
 
-## Schema definition. Type system!
+## Schema definition: Type system
 ```json
 {
   "name": "GithubUser",
@@ -264,40 +267,45 @@ Demo: Graph*i*QL
 
 
 ## Fragments
-* select fields on specific types
-
-Demo: Graph*i*QL
-
-* very much used by Relay...
+* Group of fields on specific types
+* Used by Relay
+* Demo: Graph*i*QL
 
 
 ## Mutations
-TBD
+
+```javascript
+mutation UserManagementAPI {
+  addUser(input: {login: "user", name: "Mr.Robot"}) {
+    account {
+      login
+      name
+      creation_date
+      id
+    }
+  }
+}
+
+```
 
 
 ## Huge Ecosystem
+* [graphql.org Specification](graphql.org)
 * [graph.cool](http://docs.graph.cool/docs/data-model)
+* [Schema from Postgresql database](https://github.com/calebmer/postgraphql)
+* [Schema from graffiti-mongoose](https://graffiti-todo.herokuapp.com/)(Example Relay TodoMVC application using graffiti-mongoose )
 * Meteor: Apollo stack
+* graphql-tools: _mock server_ for easy testing (by apollo people?)
 * [graphql backends in _scala, rails, django, node, etc_](https://github.com/steveluscher/zero-to-graphql)
 * graphql-hub
-* Chrome extension for graphql-network
-* graphql-tools: _mock server_ for easy testing (by apollo people?)
-* [Create Schema from Postgresql database](https://github.com/calebmer/postgraphql)
-
-Note:
-Detailed Specification
-[graphql.org](graphql.org)
+* [Chrome extension for graphql-network](https://chrome.google.com/webstore/detail/graphql-network/igbmhmnkobkjalekgiehijefpkdemocm)
+* [graphql-cheat-sheet](https://raw.githubusercontent.com/sogko/graphql-shorthand-notation-cheat-sheet/master/graphql-shorthand-notation-cheat-sheet.png)
+* https://learngraphql.com/
 
 
 ## Latest news headlines from React Europe 2016
-* GraphQL bring subscriptions / real-time communication
 * deferred fragments
+* GraphQL brings subscriptions / real-time communication
 
 
-Note:
-GraphQL solves problems
-* flex queries
-* ui driven: no over-fetching
-* no under-fetching
-* flexible for different devices
-* change api/compatible...
+![blog entry](images/graphqSubscriptionBlog.png)

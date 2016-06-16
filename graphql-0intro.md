@@ -1,7 +1,7 @@
 # Introduction
 
-* "My experience with a monolithic frontend web app..."
-* "Be creative, again!"
+ "My experience with a monolithic frontend web app..."
+ "Let's be creative, again!"
 
 
 
@@ -58,7 +58,7 @@ Note:
 even better: Redux...
 
 
-## What is wrong with REST?
+## What is wrong with REST
 
 
 ![](./images/githubPage.png)
@@ -73,7 +73,7 @@ even better: Redux...
 ![](./images/rest-github-apis.png)
 
 
-## What is wrong with using REST?
+## What is wrong with using REST
  * one resource = one request -> many requests
  * only *one* representation for different devices
  * n+1 / paging

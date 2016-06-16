@@ -1,15 +1,13 @@
 # What is Relay?
-![https://raw.githubusercontent.com/facebook/relay/master/website/src/relay/img/logo.svg](./images/relayLogo.svg)  <!-- .element: style="height:10em" -->
-
-"Data-fetching functionality for React applications"
+![https://raw.githubusercontent.com/facebook/relay/master/website/src/relay/img/logo.svg](./images/relayLogo.svg)  <!-- .element: style="height:12em" -->
 
 
-![https://raw.githubusercontent.com/facebook/relay/master/website/src/relay/img/logo.svg](./images/relayLogo.svg)  <!-- .element: style="height:10em" -->
+![relay-store @darmstadt main station](images/relay-everywhere.png)
 
-"A framework for building data-driven React applications", [facebook.github.io/relay](http://facebook.github.io/relay)
+
+> "A **framework** for building data-driven React applications", [facebook.github.io/relay](http://facebook.github.io/relay)
 
 ... on top of GraphQL
-
 
 
 > "Relay drives some React apps, and **reduces lots of code** on server and client side."
@@ -19,29 +17,30 @@
 open source since 2015
 
 
-* **Colocation**
+## Main features
+* **Co-location**
 
-* **Declarative**
+* **Declarative style**
 
-* **Mutations**
+* **Mutations handling**
 
 
 # Co-locating
 ```javascript
-class Tea extends React.Component {
+class MailUser extends React.Component {
     render() {
-        let {name, steepingTime} = this.props.tea;
-        return (<li key={name}>
-            {name} (<em>{steepingTime} min</em>)
+        let {name, email} = this.props.user;  // fragment's name
+        return (<li key={ name }>
+            { name } (<a href={ 'mailto:' + email }>send mail</a>)
           </li>);
     }
 }
-export default class Relay.createContainer(Tea, {
+export default Relay.createContainer(MailUser, {
     fragments: {
-        tea: () => Relay.QL`
-          fragment on Tea {
-            name,
-            steepingTime,
+        user: () => Relay.QL`
+          fragment on User {
+            name
+            email
           }
         `, // ES6 template String
     }
@@ -50,62 +49,95 @@ export default class Relay.createContainer(Tea, {
 
 
 # Co-locating
-Each component specifies the data it needs
-+ Less context changes while developing frontend
-+ New colleagues get easily into it.
-+ Less breaking code (checks, tooling)
+## Each component also specifies the data it needs
+* Less context changes
+
+* New colleagues get easily into it
 
 
-# Declarative:
+# Declarative style
 _UI defines **what data** it needs_
+* No more over-fetching and under-fetching
+* Auto code checks, e.g. eslint plugin
+* Auto query validation
 
+_Relay/GraphQL can do **all the heavy lifting**_
+* Render when data fully loaded
+* Auto query composition -> Demo
+* Batch data queries efficiently (N+1 problem)
 
-## Relay/GraphQL can do all the heavy weighting:
-
-* auto query validation
-* auto query composition
-* render when data fully loaded
-* batch data queries efficiently (N+1 problem)
-* less dependencies of server-client
-* no more over-fetching and under-fetching
-
-
+Note:
+* Less dependencies of server-client
 ## And it does even more:
 * Client-side store / cache
-  * mutate data on client + server and everything
   * only load data once per batch load
+## One Relay Store - caching, Mutations
 
 
-## Mutations
-* change data on client and server...
-[IMG] TBD
+### DEMO: github branch ci status
 
-* optimistic / error handling / batching ... all built-in.
-[code example TBD]
-[IMG] TBD
+https://github.com/lowsky/dashboard/tree/graphql-relay
+![Dashboard-Demo-Screenshot](images/dashboard-branches.png)
 
 
-## Relay App building blocks / layers
-[IMG]
- 1. queued data: optimistic data
- 1. store data: server
- 1. cached data
+## How Relay extends Flux
+**Relay Store** = client-side cache
 
-[Code examples]
-TBD
+(normalized, flattened graph representation)
+![https://facebook.github.io/react/img/blog/relay-components/relay-architecture.png](images/relay-architecture.png)
 
 
-## How Relay extends Flux architecture:
-DataFetching: Relay Store = client-side cache (normalized, flattened graph representation
-![relay-architecture](https://facebook.github.io/react/img/blog/relay-components/relay-architecture.png)
-TBD
+# Mutations
+Changing data on client and server
+![https://facebook.github.io/react/img/blog/relay-components/relay-architecture.png](images/relay-architecture.png)
+
+All built-in: Optimistic update / Error handling / Batching
 
 
-## Further slides and more details about: TBD
-* Paging: ~ graphql range for pagination/
-* Optimize data-fetching: deferred fragments
+## Uncovered
+* Mutations in relay
+* Facebook **data-loader** for optimized loading...
+* babel-plugin
+* paging support per "Connection"
 
-[code example TBD]
-* GraphQL schema Relay compatible
-* How to generate Relay code from GraphQL Schema
 
+## Ecosystem, tools:
+![http://docs.apollostack.com/logo/square.png](images/apollo-square.png)
+
+### [Apollo stack](http://docs.apollostack.com/)
+
+ [apollo-meteor-stack](http://docs.apollostack.com/#Meteor-Examples)
+
+ [apollo-angular2](http://docs.apollostack.com/apollo-client/angular2.html)
+
+ [apollo-react-redux](http://docs.apollostack.com/apollo-client/redux.html)
+
+
+## More tools
+* [Comparing Redux and Relay](https://www.reindex.io/blog/redux-and-relay)
+* [IntelliJ/Webstorm graphql/relay plugin](https://plugins.jetbrains.com/plugin/8097)
+
+* [awesome relay list by Brooklyn Zelenka](https://github.com/expede/awesome-relay)
+
+
+* [Relay for visual learners](http://sgwilym.github.io/relay-visual-learners)
+![Relay Visual Learners](images/relayVisualLearners.png)
+
+
+## Ecosystem - cloud providers:
+[Reindex - Instant GraphQL Backend for Relay](https://www.reindex.io/)
+![reindex](images/reindex.png)
+
+
+[graph.cool : Build a client on top of graphql + relay](https://graph.cool)
+![https://graph.cool/](images/graphcool.png)
+
+
+## Summary
+
+* Works at facebook in production: **_well tested_**
+* React Native / Server side rendering
+* Convincing concept
+* Looks simple but you might have _difficult problems_, e.g.
+  * graphql schema: _ids_ were no "strings"
+  * Root-Query: - babel transformation: no string substitution enabled
