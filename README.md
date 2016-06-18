@@ -7,21 +7,17 @@ _"React mit GraphQL und Relay: Data-Binding 2.0"_
 
 This is based on the great [reveal.js framework](https://github.com/hakimel/reveal.js) by Hakim El Hattab
 
-# Run deck locally:
+## Run deck locally
+
+Opens slides in a new browser window:
 
 ```
 npm install
 
+# Either A) Just serving latest version:
 npm start
-```
 
-or
+# Or B) With file-changes through grunt:
+npm run watch
 
-# serve it locally
-```
-# after global installation of a http-server
-npm i -g http-server
-
-# run this server in this folder...
-http-server
 ```

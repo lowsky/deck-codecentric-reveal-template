@@ -1,14 +1,13 @@
 {
-  "name": "deck-graphql-relay-databinding2.0",
+  "name": "deck-graphql-relay-talk",
   "description": "Presentation about GraphQL, Relay, React",
-  "main": "js/reveal.js",
   "scripts": {
-    "start": "grunt serve",
-    "serve-local": "http-server -o"
+    "watch": "grunt serve",
+    "start": "http-server -o"
   },
   "keywords": [
     "GraphQL",
-    "Relay",
+    "relay",
     "React",
     "reveal"
   ],
@@ -21,7 +20,7 @@
     "url": "https://github.com/lowsky/deck-graphql-relay-talk"
   },
   "engines": {
-    "node": "~4.1.1"
+    "node": "5"
   },
   "devDependencies": {
     "express": "~4.13.3",
