@@ -1,6 +1,6 @@
-# Talk GraphQL + Relay: Data-binding 2.0 for React
+# Talk GraphQL + Relay 
 
-Presentation at [EnterJS 2016](https://www.enterjs.de/abstracts.html#react-mit-graphql)
+Presentation at [MunichJS Meetup, Sept 2016](http://www.meetup.com/de-DE/MunichJS-User-Group/events/233963735/)
 
 [Open it in presentation mode here](https://lowsky.github.io/deck-graphql-relay-talk/)
 
