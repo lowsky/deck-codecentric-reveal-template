@@ -3,23 +3,27 @@
 
 ![reactGraphqlRelay](images/reactGraphqlRelay.jpg)
 
-
+Note:
 ## alternatives
 * Falcor@netflix
 
 
 ## Known limits / risks?
-Ready for going productive?
 * D.O.S. attack by a complex query
 
- Solution: Analysis of AST of parsed query for complexity
+ Solution: Analysis of AST of query complexity
 
 
 ## Should we use it now?
 _**Yes!**_
 
+[GitHub announcement](https://developer.github.com/early-access/graphql/)
+
+
+![GitHub announcement](images/githubGraphQLannounce.png)
+
+
 ## Should we migrate?
-_**You can run REST and GraphQL in parallel!**_
+You _**can**_ run REST and GraphQL **in parallel**!
 
-_**You can migrate step-by-step!**_
-
+You _**can**_ migrate step-by-step!

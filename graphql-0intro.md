@@ -1,42 +1,39 @@
-# Introduction
+## Let's talk about REST!
 
-## So, what is wrong with REST?
-
-
+Note:
 ## What is wrong with REST?
 Nothing.
+But, ...
  
-```
-// todo: add slide here with kudos to Roy T. Fielding ...
-```
- 
-but ....
-Note:
 * Architectural Styles and the Design of Network-based Software Architectures,
 * Fielding's doctoral dissertation, describes Representational State Transfer (REST)
 * http://www.anchor.com.au/blog/2013/02/how-everyone-is-doing-rest-wrong/
 
-## So - What is wrong with REST
+
+Let's build a web client
 
 ![](./images/githubPage.png)
 
 
+Every component need some data
 ![](./images/githubPageMarked.png)
 
 
+GitHub API example
 ![](./images/rest-github-user.png)
 
-
+Note:
 ![](./images/rest-github-apis.png)
 
 
-## What is wrong with using REST
- * one resource = one request + many extra requests
- * only *one* representation for different devices
- * no easy paging
- * have to *document* each end-point separately 
- * *all* or *nothing*: over-fetching
- * workaround: custom end points -> more stuff to code + maintain
+## Issues when using REST
+ * one resource => one request + **many extra requests**
+ * only **one representation** - for different devices
+ * **paging**
+ * **documentation** for each end-point
+ * *all* or *nothing*: **over-fetching**
+ 
+ * workaround: **custom end points** -> more stuff to code + maintain
 
 Note:
 ### More problems arise:

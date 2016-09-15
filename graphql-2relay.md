@@ -31,7 +31,7 @@ class MailUser extends React.Component {
     render() {
         let {name, email} = this.props.user;  // fragment's name
         return (<li key={ name }>
-            { name } (<a href={ 'mailto:' + email }>send mail</a>)
+            { name } <a href={ 'mailto:' + email }>send mail</a>
           </li>);
     }
 }
@@ -42,28 +42,27 @@ export default Relay.createContainer(MailUser, {
             name
             email
           }
-        `, // ES6 template String
+        ` // ES6 template String
     }
 });
 ```
 
 
-# Co-locating
-## Each component also specifies the data it needs
+All important information on one place  
 * Less context changes
-
 * New colleagues get easily into it
+* Tool support
 
 
 # Declarative style
 _UI defines **what data** it needs_
-* No more over-fetching and under-fetching
-* Auto code checks, e.g. eslint plugin
-* Auto query validation
+* No more **over-fetching** and **under-fetching**
+* eslint plugin
+* auto query validation
 
 _Relay/GraphQL can do **all the heavy lifting**_
-* Render when data fully loaded
-* Auto query composition -> Demo
+* wait until all data is fully loaded
+* Auto query composition -> **Demo**
 * Batch data queries efficiently (N+1 problem)
 
 Note:
@@ -135,9 +134,14 @@ All built-in: Optimistic update / Error handling / Batching
 
 ## Summary
 
-* Works at facebook in production: **_well tested_**
-* React Native / Server side rendering
-* Convincing concept
+* In production at facebook
+* React Native
+* Server side rendering
+* Future: 
+ * subscriptions
+ * optimize for fast user feedback
+
+Note:+
 * Looks simple but you might have _difficult problems_, e.g.
   * graphql schema: _ids_ were no "strings"
   * Root-Query: - babel transformation: no string substitution enabled

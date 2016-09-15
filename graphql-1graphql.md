@@ -19,6 +19,8 @@
 
 ![REST-graphql-small](./images/rest-graphql-arch.png) <!-- .element: style="height:10em" -->
 
+Only **one end-point**
+
 Note:
 from
 https://medium.com/apollo-stack/how-do-i-graphql-2fcabfc94a01
@@ -156,17 +158,18 @@ Aka. "Nested rpc", hierachical
 }
 ```
 
-
-## GraphQL Features
-* **_Hierarchical_ (embedding sub queries)**
+Note:
+## GraphQL Base
 * **Client-specified queries** ("only what the client needs")
+ 
+## There is more cool stuff:
 * _Strongly-typed_ (schema definition)
 * Introspective (tools can look into the schema)
+* Structured, Arbitrary Code (queries backed by any code, not only SQL)
 
-Note: there is more:
+...Note: there is more:
 * Product-centric (driven by view, "fetch only what is needed")
 * Backwards Compatible
-* Structured, Arbitrary Code (queries backed by any code, not only SQL)
 * Application-Layer Protocol (independend of http/any...)
 
 
@@ -323,7 +326,7 @@ mutation UserManagementAPI {
 
 ## Server implementations
 * [Schema from Postgresql database](https://github.com/calebmer/postgraphql)
-* [Schema from graffiti-mongoose](https://graffiti-todo.herokuapp.com/)(Example Relay TodoMVC application using graffiti-mongoose )
+* [Schema from graffiti-mongoose](https://graffiti-todo.herokuapp.com/) (Example Relay TodoMVC application)
 
 * [Graphene, graphql backend in python](http://graphene-python.org/)
 * [graphql backends in _scala, rails, node, etc_](https://github.com/steveluscher/zero-to-graphql)
@@ -334,14 +337,12 @@ mutation UserManagementAPI {
 * _mock server_: graphql-tools for easy testing (by apollo people)
 * [Chrome extension for graphql-network](https://chrome.google.com/webstore/detail/graphql-network/igbmhmnkobkjalekgiehijefpkdemocm)
 * [graphql-cheat-sheet](https://raw.githubusercontent.com/sogko/graphql-shorthand-notation-cheat-sheet/master/graphql-shorthand-notation-cheat-sheet.png)
-* https://learngraphql.com/
 
 
 ## Latest news headlines from React Europe 2016
-* @defer-ed fragments -> fast first response - is comming soon
- (pull request exists, already in use...)
-* batch -> depending queries in one request
-* GraphQL subscriptions / updates on-changes
+* **@defer-ed fragments** -> fast first response - is comming soon
+* **batch queries** -> depending queries in one request
+* GraphQL **subscriptions** / updates on-changes
 
-
+Note:
 ![blog entry](images/graphqSubscriptionBlog.png)
