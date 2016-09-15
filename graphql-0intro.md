@@ -1,65 +1,22 @@
 # Introduction
 
- "My experience with a monolithic frontend web app..."
- "Let's be creative, again!"
+## So, what is wrong with REST?
 
 
-
-## What is data-binding
- ![docs.angularjs.org/guide/databinding](https://docs.angularjs.org/img/Two_Way_Data_Binding.png)
-
- [docs.angularjs.org/guide/databinding](https://docs.angularjs.org/guide/databinding)
-
-Angular, Ember, Meteor:  M V C
-
-Note:
-["Data binding code in 9 JavaScript frameworks"](http://engineering.paiza.io/entry/2015/03/12/145216)
-
-
-# What is wrong with MVC
-![http://de.slideshare.net/ZachLendon/reconciling-react-as-a-view-layer-replacement-midwestjs-2014/51-Thank_YouQuestionsZach_Lendonzachlendonreactjs_midwestjshttpsgithubcomzachlendonreactjs_on](images/realWorldMVC.png)
-
-
-# What about React?
-![REACT-LOGO](./images/reactLogo.png)  <!-- .element: style="height:10em" -->
-
-*no data-binding*
-
-
-## The React way: composition
-```javascript
-let modelData = {
-    name: 'enterjs'
-};
-ReactDOM.render(<HelloWorld world={ modelData } />, domElement);
-
-let HelloWorld = React.createClass({
-  render: () => { return (<Hello name={ this.props.world.name } />) }
-})
-let Hello = new React.createClass({
-  render: () => { return (<span>Hello, { this.props.name } ! </span>) }
-})
+## What is wrong with REST?
+Nothing.
+ 
 ```
-
-gives
-
-```html
-<span>Hello, enterjs !</span>
+// todo: add slide here with kudos to Roy T. Fielding ...
 ```
+ 
+but ....
 Note:
-  composition,
-  props / state
+* Architectural Styles and the Design of Network-based Software Architectures,
+* Fielding's doctoral dissertation, describes Representational State Transfer (REST)
+* http://www.anchor.com.au/blog/2013/02/how-everyone-is-doing-rest-wrong/
 
-
-## Flux
-![https://facebook.github.io/flux/docs/overview.html#content](./images/flux.png)
-*separation of concerns*
-
-even better: Redux...
-
-
-## What is wrong with REST
-
+## So - What is wrong with REST
 
 ![](./images/githubPage.png)
 
@@ -74,16 +31,18 @@ even better: Redux...
 
 
 ## What is wrong with using REST
- * one resource = one request -> many requests
+ * one resource = one request + many extra requests
  * only *one* representation for different devices
- * n+1 / paging
- * have each end-point *documented*
- * *all* or *nothing*
- * custom end points for 'ad-hoc' special data
+ * no easy paging
+ * have to *document* each end-point separately 
+ * *all* or *nothing*: over-fetching
+ * workaround: custom end points -> more stuff to code + maintain
 
 Note:
 ### More problems arise:
-* When the apps grow -> things getting more complex
-* inter-dependencies grow
-* hard to maintain
-* stay backwards compatible
+* When the apps grow 
+* -> things getting more complex
+* -> inter-dependencies grow
+* hard to maintain on server and client - dependencies
+* backward compatibility
+ 

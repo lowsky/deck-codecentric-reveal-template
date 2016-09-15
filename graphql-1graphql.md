@@ -8,13 +8,14 @@
 
 > since 2013:
 >
-> "As a user of the native facebook iOS or Android app, you are using an app **powered by GraphQL**."
+> "As a user of the native facebook iOS or Android app, 
+> you are using an app **powered by GraphQL**."
 
 
 # What is it?
 
 
-**Centralized data provider**
+**Centralized data Provider**
 
 ![REST-graphql-small](./images/rest-graphql-arch.png) <!-- .element: style="height:10em" -->
 
@@ -29,10 +30,14 @@ Jonas Helfer
 
 
 ## "Query Language for the web"
-Similar to JSON, but without 'values'
 
-```javascript
-{
+
+<table>
+<tr>
+<td>
+GraphQL Query:
+<pre>
+<code class="javascript" style='width:420px'>query {
     githubUser(id:"lowsky") {
         login
         name
@@ -41,13 +46,14 @@ Similar to JSON, but without 'values'
         created_at
     }
 }
-```
-
-
-## Query result:
-
-```json
-{
+</code>
+Similar to JSON, but without 'values'
+</pre>
+</td>
+<td>
+Query result:
+<pre>
+<code class="json" style='width:420px'>{
     "githubUser": {
       "login": "lowsky",
       "name": "Robert Hostlowsky",
@@ -56,8 +62,12 @@ Similar to JSON, but without 'values'
       "created_at": "2010-03-07T20:50:06Z"
     }
 }
-```
+</code>
 simple JSON
+</pre>
+</td>
+</tr>
+</table>
 
 
 ## *Graph*-QL
@@ -192,10 +202,9 @@ Note: there is more:
 ![DEMO/screen shot...](images/graphqlQuery.png)
 
 
-## Use Structure, Arbitrary Code
+## Structured, starting with Root Node
 ```javascript
 import {
-  graphql,
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLString,
@@ -210,8 +219,25 @@ const schema = new GraphQLSchema({
         type: GraphQLString,
         args: {
           text: { type : new GraphQLNonNull(GraphQLString) }
+        }, // ...
+    }
+  })
+});
+```
+
+
+## runs Arbitrary Code (graphql-js)
+```javascript
+const schema = new GraphQLSchema({
+  query: new GraphQLObjectType({
+    name: 'RootQueryType',
+    fields: {
+      search: {
+        type: GraphQLString,
+        args: {
+          text: { /* */ }
         },
-        resolve(root, args) {
+        resolve(root, args) { // can run any code:
           return 'Hello, ' + args.text;
         }
       }
@@ -229,13 +255,14 @@ Note:
 const query = `
   {
     search(text: "enterjs")
-  }`;
+  }
+`;
 
 graphql(schema, query).then(result => {
   console.log(result);
 });
 ```
-results in
+Output:
 ```
 Hello, enterjs
 ```
@@ -260,6 +287,7 @@ const GithubUserType = new GraphQLObjectType({
 
 
 ## Queries
+Demo: Graph*i*QL
 
 
 ## Validations
@@ -285,27 +313,35 @@ mutation UserManagementAPI {
     }
   }
 }
-
 ```
 
 
 ## Huge Ecosystem
 * [graphql.org Specification](graphql.org)
-* [graph.cool](http://docs.graph.cool/docs/data-model)
+* https://learngraphql.com/
+
+
+## Server implementations
 * [Schema from Postgresql database](https://github.com/calebmer/postgraphql)
 * [Schema from graffiti-mongoose](https://graffiti-todo.herokuapp.com/)(Example Relay TodoMVC application using graffiti-mongoose )
-* Meteor: Apollo stack
-* graphql-tools: _mock server_ for easy testing (by apollo people?)
-* [graphql backends in _scala, rails, django, node, etc_](https://github.com/steveluscher/zero-to-graphql)
-* graphql-hub
+
+* [Graphene, graphql backend in python](http://graphene-python.org/)
+* [graphql backends in _scala, rails, node, etc_](https://github.com/steveluscher/zero-to-graphql)
+
+
+## extra tools for devs
+* IntelliJ plugin
+* _mock server_: graphql-tools for easy testing (by apollo people)
 * [Chrome extension for graphql-network](https://chrome.google.com/webstore/detail/graphql-network/igbmhmnkobkjalekgiehijefpkdemocm)
 * [graphql-cheat-sheet](https://raw.githubusercontent.com/sogko/graphql-shorthand-notation-cheat-sheet/master/graphql-shorthand-notation-cheat-sheet.png)
 * https://learngraphql.com/
 
 
 ## Latest news headlines from React Europe 2016
-* deferred fragments
-* GraphQL brings subscriptions / real-time communication
+* @defer-ed fragments -> fast first response - is comming soon
+ (pull request exists, already in use...)
+* batch -> depending queries in one request
+* GraphQL subscriptions / updates on-changes
 
 
 ![blog entry](images/graphqSubscriptionBlog.png)
