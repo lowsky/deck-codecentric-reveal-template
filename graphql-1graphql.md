@@ -27,6 +27,7 @@ Note:
 
 
 ## Data Graph
+Data in any IT landscape:
 ![data-topology](./images/data-topology.png)
 
 
@@ -200,7 +201,7 @@ type Track {
 
 ```javascript
 mutation UserManagementAPI {
-  addUser(input: {login: "user", name: "Mr.Robot 2"}) {
+  addUser(input: {login: "user", name: "Mr.Robot"}) {
     account {
       login
       name
