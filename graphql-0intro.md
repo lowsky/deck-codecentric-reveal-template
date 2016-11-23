@@ -22,20 +22,24 @@ Every component need some data
 GitHub API example
 ![](./images/rest-github-user.png)
 
-Note:
+
 ![](./images/rest-github-apis.png)
 
 
 ## Issues when using REST
- * one resource => one request + **many extra requests**
- * only **one representation** - for different devices
- * **paging**
- * **documentation** for each end-point
  * *all* or *nothing*: **over-fetching**
- 
- * workaround: **custom end points** -> more stuff to code + maintain
+ * only one resource per request => **many extra requests**
+ * workaround: custom end points => **adds complexity** 
+
+
+## There is no backend nor frontend team
+![](./images/Rest-front-backend-team.png)
 
 Note:
+ * **documentation** for each end-point
+ * only **one representation** - for different devices
+ * **paging** 
+
 ### More problems arise:
 * When the apps grow 
 * -> things getting more complex

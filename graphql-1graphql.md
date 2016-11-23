@@ -6,40 +6,39 @@
 ![graphql-everywhere](./images/graphql-everywhere.jpg)
 
 
-> since 2013:
+> since 2012:
 >
 > "As a user of the native facebook iOS or Android app, 
 > you are using an app **powered by GraphQL**."
+
+![facebook-ios](./images/facebook-ios.png)
 
 
 # What is it?
 
 
 **Centralized data Provider**
-
-![REST-graphql-small](./images/rest-graphql-arch.png) <!-- .element: style="height:10em" -->
-
-Only **one end-point**
+<img src="./images/rest-graphql-arch.png" />
 
 Note:
-from
-https://medium.com/apollo-stack/how-do-i-graphql-2fcabfc94a01
-Jonas Helfer
-
-
 ![REST-graphql](./images/rest-graphql-arch.png)
+<a href="https://cdn-images-1.medium.com/max/1600/1*f_XvFD7FvliMM74WHJ0vRQ.png" data-preview-link="true"></a>
 > https://cdn-images-1.medium.com/max/1600/1*f_XvFD7FvliMM74WHJ0vRQ.png)
+
+
+## Data Graph
+![data-topology](./images/data-topology.png)
+
 
 
 ## "Query Language for the web"
 
-
-<table>
+<table width="100%">
 <tr>
 <td>
 GraphQL Query:
 <pre>
-<code class="javascript" style='width:420px'>query {
+<code class="javascript">query {
     githubUser(id:"lowsky") {
         login
         name
@@ -49,13 +48,13 @@ GraphQL Query:
     }
 }
 </code>
-Similar to JSON, but without 'values'
+JSON without 'values'
 </pre>
 </td>
 <td>
-Query result:
+Result:
 <pre>
-<code class="json" style='width:420px'>{
+<code class="json">{
     "githubUser": {
       "login": "lowsky",
       "name": "Robert Hostlowsky",
@@ -100,6 +99,7 @@ Aka. "Nested rpc", hierachical
 ```
 
 
+### Graph-QL: tree based 
 ```json
 {
     "github": {
@@ -138,19 +138,6 @@ Aka. "Nested rpc", hierachical
                 }
               }
             ]
-          },
-          {
-            "name": "updtr",
-            "commits": [
-              {
-                "message": "Update package.json",
-                "date": "2015-12-08T23:29:19Z",
-                "author": {
-                  "login": "matthaias"
-                }
-              }
-            ],
-            "issues": []
           }
         ]
       }
@@ -180,134 +167,40 @@ Note:
   "fields": [
     {
       "name": "id",
-      "type": { "name": "Int", }
-    },
-    {
+      "type": { "name": "Int" }
+    }, {
       "name": "name",
       "type": { "name": "String" }
-    },
-    {
+    }, {
       "name": "repos",
-      "type": { "kind": "LIST" }
+      "type": { "kind": "LIST" } 
     }
   ]
 }
 ```
 
-
-### Schema inspection in Graph*i*QL
-
-![DEMO/screen shot...](images/graphqlSchemaInspect.png)
-
-
-### Schema enables client-side tooling
-
-![DEMO/screen shot...](images/graphqlQuery.png)
-
-
-## Structured, starting with Root Node
 ```javascript
-import {
-  GraphQLSchema,
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLNonNull
-} from 'graphql';
+// flow - type definition:
+type Album {
+  name: String
+  image_url: String
+  tracks: [Track]
+}
+type Track {
+  name: String
+  preview_url: String
+  artists: [Artists]
+  track_number: Int
+}
 
-const schema = new GraphQLSchema({
-  query: new GraphQLObjectType({
-    name: 'RootQueryType',
-    fields: {
-      search: {
-        type: GraphQLString,
-        args: {
-          text: { type : new GraphQLNonNull(GraphQLString) }
-        }, // ...
-    }
-  })
-});
 ```
-
-
-## runs Arbitrary Code (graphql-js)
-```javascript
-const schema = new GraphQLSchema({
-  query: new GraphQLObjectType({
-    name: 'RootQueryType',
-    fields: {
-      search: {
-        type: GraphQLString,
-        args: {
-          text: { /* */ }
-        },
-        resolve(root, args) { // can run any code:
-          return 'Hello, ' + args.text;
-        }
-      }
-    }
-  })
-});
-```
-Note:
- (queries backed by any code not only SQL)
- e.g. Hello 'cat':
-
-
-### Running a query
-```javascript
-const query = `
-  {
-    search(text: "enterjs")
-  }
-`;
-
-graphql(schema, query).then(result => {
-  console.log(result);
-});
-```
-Output:
-```
-Hello, enterjs
-```
-
-
-## Creating a custom type
-```javascript
-const GithubUserType = new GraphQLObjectType({
-  name : 'GithubUser',
-  fields : {
-    login : { type : GraphQLString },
-    repos : {
-        type : new GraphQLList(RepoType),
-        resolve(user) {
-          // could call any other library
-          return githubClient.getReposForUser(user.login);
-        }
-    },
-  }
-});
-```
-
-
-## Queries
-Demo: Graph*i*QL
-
-
-## Validations
-Demo: Graph*i*QL
-
-
-## Fragments
-* Group of fields on specific types
-* Used by Relay
-* Demo: Graph*i*QL
 
 
 ## Mutations
 
 ```javascript
 mutation UserManagementAPI {
-  addUser(input: {login: "user", name: "Mr.Robot"}) {
+  addUser(input: {login: "user", name: "Mr.Robot 2"}) {
     account {
       login
       name
@@ -320,8 +213,7 @@ mutation UserManagementAPI {
 
 
 ## Huge Ecosystem
-* [graphql.org Specification](graphql.org)
-* https://learngraphql.com/
+<a href="https://github.com/chentsulin/awesome-graphql#lib" data-preview-link="true">https://github.com/chentsulin/awesome-graphql#lib</a>
 
 
 ## Server implementations
@@ -337,12 +229,3 @@ mutation UserManagementAPI {
 * _mock server_: graphql-tools for easy testing (by apollo people)
 * [Chrome extension for graphql-network](https://chrome.google.com/webstore/detail/graphql-network/igbmhmnkobkjalekgiehijefpkdemocm)
 * [graphql-cheat-sheet](https://raw.githubusercontent.com/sogko/graphql-shorthand-notation-cheat-sheet/master/graphql-shorthand-notation-cheat-sheet.png)
-
-
-## Latest news headlines from React Europe 2016
-* **@defer-ed fragments** -> fast first response - is comming soon
-* **batch queries** -> depending queries in one request
-* GraphQL **subscriptions** / updates on-changes
-
-Note:
-![blog entry](images/graphqSubscriptionBlog.png)
