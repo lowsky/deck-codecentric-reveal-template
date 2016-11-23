@@ -1,4 +1,6 @@
-# Talk GraphQL + Relay 
+# Talk about GraphQL + Relay 
+
+Presentation at [ReactJS Meetup, Nov 2016](https://www.meetup.com/de-DE/ReactJS-Meetup-Munich/events/235593167/)
 
 Presentation at [MunichJS Meetup, Sept 2016](http://www.meetup.com/de-DE/MunichJS-User-Group/events/233963735/)
 
