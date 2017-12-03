@@ -33,7 +33,7 @@ GitHub API example
 
 
 ## There is no backend nor frontend team
-![](./images/Rest-front-backend-team.png)
+![](./images/rest-front-backend-team.png)
 
 Note:
  * **documentation** for each end-point
