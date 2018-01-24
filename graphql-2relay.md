@@ -77,7 +77,7 @@ Note:
 https://github.com/lowsky/dashboard/tree/graphql-relay
 ![Dashboard-Demo-Screenshot](images/dashboard-branches.png)
 
-
+Notes:
 ## How Relay extends Flux
 **Relay Store** = client-side cache
 
